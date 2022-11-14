@@ -18,7 +18,7 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\ManyToMany(targetEntity: author::class)]
+    #[ORM\ManyToMany(targetEntity: Author::class)]
     private Collection $authors;
 
     public function __construct()
@@ -65,5 +65,9 @@ class Book
         $this->authors->removeElement($author);
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->title;
     }
 }
