@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div>
+ <label for="student_name"> {{ form_label(form.name)}} </laebel>
+  {{ form_widget(form.name, {'attr':{'class':'form-control'}})}}
+</div>
+    <div>
+ <label for="student_surname">  {{ form_label(form.surname)}}  </laebel>
+   {{ form_widget(form.surname, {'attr':{'class':'form-control'}})}}
+    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
