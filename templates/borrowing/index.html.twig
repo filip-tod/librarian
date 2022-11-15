@@ -8,8 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>DateBorrowed</th>
+                <th>Title</th>
+                <th>Student</th>
                 <th>BookReturned</th>
                 <th>actions</th>
             </tr>
@@ -17,8 +18,9 @@
         <tbody>
         {% for borrowing in borrowings %}
             <tr>
-                <td>{{ borrowing.id }}</td>
                 <td>{{ borrowing.dateBorrowed ? borrowing.dateBorrowed|date('Y-m-d') : '' }}</td>
+                <td>{{borrowing.book.title}}</td>
+                <td>{{borrowing.student}}</td>
                 <td>{{ borrowing.bookReturned ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('app_borrowing_show', {'id': borrowing.id}) }}">show</a>
