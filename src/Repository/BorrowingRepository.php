@@ -63,4 +63,16 @@ class BorrowingRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findMostPopularBooks()
+{
+    $sql = "SELECT b2.title, COUNT(*) AS howMany 
+    FROM borrowing b1 
+    INNER JOIN book b2 on b2.id=b1.book_id 
+    GROUP BY b2.title 
+    ORDER BY howMany DESC";
+
+    $statement= $this->_em->getConnection()->prepare($sql);
+    $result = $statement->executeQuery()->fetchAllAssociative();
+    return $result;
+}
 }
